@@ -1,0 +1,6 @@
+---
+Name: modular-build-model
+---
+Modular\Models\Build:
+  extensions:
+    - Modular\Extensions\Model\Built
