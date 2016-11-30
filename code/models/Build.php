@@ -12,6 +12,8 @@ class Build extends Model {
 	// disable all BuildModel requireDefaultRecords processing (providePermissions should still work).
 	private static $disable_all = false;
 
+	private static $enabled = true;
+
     public function requireTable() {
         \DB::dontRequireTable(get_class($this));
 	    \DB::dontRequireTable('Modular\Models\Build');
