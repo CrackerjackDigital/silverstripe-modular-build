@@ -34,7 +34,7 @@ class Build extends Model {
      */
     public function forceBuild() {
         // classes to build are passed as build=BuildClass1,BuildClass2,BuildClassN or 'build=all' for all classes
-	    // where BuildClass is e.g. RelationshipTypeBuild
+	    // where BuildClass is e.g. SocialActionBuild
         $buildClasses = array_map(
 	        'strtolower',
 	        explode(',', \Controller::curr()->getRequest()->getVar('build'))

@@ -2,15 +2,14 @@
 namespace Modular\Extensions\Model;
 
 use Modular\enabler;
-use Modular\Fields\EnumField;
-use Modular\ModelExtension;
+use Modular\Fields\Enum;
 
 /**
  * Model extension which tracks if a record has been updated since the last build, e.g. by a User interaction or other
  * update. This way we can check on build if BuildModelUnchanged = false then don't mess with the record
  * and conversely if BuildModelUnchanged then we can mess with it.
  */
-class Built extends EnumField  {
+class Built extends Enum {
 	// in this case enabler turns the LastUpdate timestamp tracker on and off so we can
 	// do updates to the object with triggering the 'has been updated' state.
 	use enabler;
@@ -57,10 +56,14 @@ class Built extends EnumField  {
 	 *
 	 * @param string $result one of self.ResultABC constants
 	 */
-	public function buildModelBuilt($result) {
+	public function builtModelBuilt($result) {
 		$this()->{self::ResultFieldName} = $result;
 		$this()->{self::DateFieldName} = date('Y-m-d h:i:s');
-		$this()->{self::LastBuiltTimestampFieldName} = microtime();
+
+		if ($result != self::ResultUnchanged) {
+			// only update the timestamp if we changed
+			$this()->{self::LastBuiltTimestampFieldName} = microtime();
+		}
 	}
 
 	public function builtModelUpdated() {
