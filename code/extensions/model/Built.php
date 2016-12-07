@@ -66,6 +66,12 @@ class Built extends Enum {
 		}
 	}
 
+	/**
+	 * Check if the model has changed since the last time it was built, return true if so, false otherwise. This indicates if
+	 * someone has manually updated the record since it was built, and so future build's should probably not touch it.
+	 *
+	 * @return bool
+	 */
 	public function builtModelUpdated() {
 		return $this()->{self::LastUpdatedTimestampFieldName} > $this()->{self::LastBuiltTimestampFieldName};
 	}
