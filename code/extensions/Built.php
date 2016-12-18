@@ -18,6 +18,7 @@ class Built extends Enum {
 
 	const DateFieldName                 = 'BuiltDate';
 	const ResultFieldName               = 'BuiltResult';
+	const ChangesFieldName              = 'BuiltChanges';
 	const LastBuiltTimestampFieldName   = 'BuiltTimestamp';
 	const LastUpdatedTimestampFieldName = 'LastUpdatedTimestamp';
 
@@ -31,12 +32,13 @@ class Built extends Enum {
 		self::DateFieldName                 => 'SS_DateTime',
 		self::LastBuiltTimestampFieldName   => 'Int',
 		self::LastUpdatedTimestampFieldName => 'Int',
+		self::ChangesFieldName              => 'Text',
 	];
 
 	private static $options = [
 		self::ResultCreated,
-	    self::ResultChanged,
-	    self::ResultUnchanged
+		self::ResultChanged,
+		self::ResultUnchanged,
 	];
 
 	public function onBeforeWrite() {
@@ -52,7 +54,7 @@ class Built extends Enum {
 	}
 
 	/**
-	 * Set result, date and timestamp on the extended model
+	 * Set result, date and timestamp on the extended model. Doesn't write the model.
 	 *
 	 * @param string $result one of self.ResultABC constants
 	 */
@@ -63,6 +65,7 @@ class Built extends Enum {
 		if ($result != self::ResultUnchanged) {
 			// only update the timestamp if we changed
 			$this()->{self::LastBuiltTimestampFieldName} = microtime();
+			$this()->{self::ChangesFieldName} = json_encode($this()->getChangedFields());
 		}
 	}
 
