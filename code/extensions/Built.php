@@ -5,7 +5,7 @@ use Modular\enabler;
 use Modular\Fields\Enum;
 
 /**
- * Model extension which tracks if a record has been updated since the last build, e.g. by a User interaction or other
+ * Model or Type extension which tracks if a record has been updated since the last build, e.g. by a User interaction or other
  * update. This way we can check on build if BuildModelUnchanged = false then don't mess with the record
  * and conversely if BuildModelUnchanged then we can mess with it.
  */

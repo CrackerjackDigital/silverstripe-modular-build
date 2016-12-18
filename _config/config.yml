@@ -1,6 +1,6 @@
 ---
-Name: modular-build-model
+Name: modular-build-config
 ---
-Modular\Models\Build:
+Modular\Type:
   extensions:
     - Modular\Extensions\Model\Built

@@ -4,7 +4,14 @@ namespace Modular\Models;
 use Modular\enabler;
 use Modular\Model;
 
-class Build extends Model {
+/**
+ * Build model to which Build extensions are attached in order so they build in correct order to resolve
+ * dependencies etc. Each extensions derived from Build extension should provide a requireDefaultRecords function
+ * which builds the records.
+ *
+ * @package Modular\Models
+ */
+class Builder extends Model {
 	use enabler;
 
     const BuildAllFlag = 'all';
@@ -14,9 +21,13 @@ class Build extends Model {
 
 	private static $enabled = true;
 
+	/**
+	 * Don't require a table for this or immediately derived class at the moment. In future will be used to track builds so
+	 * this can be relaxed.
+	 */
     public function requireTable() {
         \DB::dontRequireTable(get_class($this));
-	    \DB::dontRequireTable('Modular\Models\Build');
+	    \DB::dontRequireTable(__CLASS__);
     }
 
     /**
