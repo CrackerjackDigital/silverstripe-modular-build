@@ -1,7 +1,7 @@
 <?php
 namespace Modular\Models;
 
-use Modular\enabler;
+use Modular\Traits\enabler;
 use Modular\Model;
 
 class Build extends Model {
