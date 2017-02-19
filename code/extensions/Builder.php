@@ -1,8 +1,8 @@
 <?php
 namespace Modular\Extensions\Model;
 
-use Modular\enabler;
 use Modular\ModelExtension;
+use Modular\Traits\enabler;
 
 /**
  * Base class for extensions that get attached to the Builder model to actually build records etc in order they are attached.
