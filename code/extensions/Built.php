@@ -12,9 +12,9 @@ use Modular\Fields\Enum;
 class Built extends Enum {
 	// in this case enabler turns the LastUpdate timestamp tracker on and off so we can
 	// do updates to the object with triggering the 'has been updated' state.
-	use enabler;
+	use \Modular\Traits\enabler;
 
-	const SingleFieldName = 'Result';
+	const Name = 'Result';
 
 	const DateFieldName                 = 'BuiltDate';
 	const ResultFieldName               = 'BuiltResult';

@@ -1,7 +1,6 @@
 <?php
 namespace Modular\Models;
 
-use Modular\enabler;
 use Modular\Model;
 
 /**
@@ -12,7 +11,7 @@ use Modular\Model;
  * @package Modular\Models
  */
 class Builder extends Model {
-	use enabler;
+	use \Modular\Traits\enabler;
 
     const BuildAllFlag = 'all';
 

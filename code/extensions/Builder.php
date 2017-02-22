@@ -1,7 +1,6 @@
 <?php
 namespace Modular\Extensions\Model;
 
-use Modular\enabler;
 use Modular\ModelExtension;
 
 /**
@@ -10,7 +9,7 @@ use Modular\ModelExtension;
  * @package Modular\Extensions\Model
  */
 class Builder extends ModelExtension  {
-	use enabler;
+	use \Modular\Traits\enabler;
 
 	private static $enabled = true;
 
