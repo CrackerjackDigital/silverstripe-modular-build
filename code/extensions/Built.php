@@ -14,7 +14,7 @@ class Built extends Enum {
 	// do updates to the object with triggering the 'has been updated' state.
 	use enabler;
 
-	const SingleFieldName = 'Result';
+	const Name = 'Result';
 
 	const DateFieldName                 = 'BuiltDate';
 	const ResultFieldName               = 'BuiltResult';
