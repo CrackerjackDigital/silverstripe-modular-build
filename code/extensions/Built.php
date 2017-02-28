@@ -28,7 +28,7 @@ class Built extends Enum {
 	const ResultUnchanged = 'unchanged';
 
 	private static $db = [
-		// enum is added
+		// enum is added as the 'Name' via normal Field mechanism
 		self::DateFieldName                 => 'SS_DateTime',
 		self::LastBuiltTimestampFieldName   => 'Int',
 		self::LastUpdatedTimestampFieldName => 'Int',
