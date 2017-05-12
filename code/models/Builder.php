@@ -14,6 +14,7 @@ use Modular\Model;
 class Builder extends Model {
 	use enabler;
 
+	// if this is passed on the command line then as build=all then a build will happen even if disable_all is true or enable is false.
 	const BuildAllFlag = 'all';
 
 	// disable all BuildModel requireDefaultRecords processing (providePermissions should still work).
