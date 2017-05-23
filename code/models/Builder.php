@@ -38,7 +38,7 @@ class Builder extends Model {
 	 */
 	public function shouldRun() {
 		return (!self::config()->get('disable_all'))
-			&& (static::enabled() || $this->forceBuild());
+			|| (static::enabled() || $this->forceBuild());
 	}
 
 	/**
