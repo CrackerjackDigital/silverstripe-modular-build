@@ -1,6 +1,8 @@
 <?php
 namespace Modular\Extensions\Model;
 
+use Config;
+use FieldList;
 use Modular\Traits\enabler;
 use Modular\Fields\Enum;
 
@@ -14,7 +16,7 @@ class Built extends Enum {
 	// do updates to the object with triggering the 'has been updated' state.
 	use enabler;
 
-	const Name = 'Result';
+	const Name = 'BuiltResult';
 
 	const DateFieldName                 = 'BuiltDate';
 	const ResultFieldName               = 'BuiltResult';
@@ -40,6 +42,8 @@ class Built extends Enum {
 		self::ResultChanged,
 		self::ResultUnchanged,
 	];
+
+	private static $admin_only = true;
 
 	public function onBeforeWrite() {
 		// if we have disabled this extension then we don't update the LastUpdated tracking timestamp on update
